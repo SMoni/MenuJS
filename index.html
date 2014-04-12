@@ -139,7 +139,8 @@
   
     $( "#left" ).click(function() {
     
-      var nextTab = currentTab.next(".menu-tab");
+      var currentTab = $(".active-tab");
+      var nextTab    = currentTab.next(".menu-tab");
 
       if ($.isEmptyObject(nextTab[0]))
         return;
@@ -150,12 +151,17 @@
       
       slideBy("-=" + currentWidth, nextTop, nextWidth);
       
+      currentTab.removeClass("active-tab");
+      
       currentTab = nextTab;
+
+      currentTab.addClass("active-tab");
 
     });
     
     $("#right").click(function() {
 
+      var currentTab   = $(".active-tab");
       var precedingTab = currentTab.prev(".menu-tab");
 
       if ($.isEmptyObject(precedingTab[0]))
@@ -166,17 +172,22 @@
 
       slideBy("+=" + currentWidth, currentTop, currentWidth);
 
+      currentTab.removeClass("active-tab");
+
       currentTab = precedingTab;
 
+      currentTab.addClass("active-tab");
+
     });
-
     
-    
-    var currentTab    = $(".active-tab");
-    var menuContainer = $("#menu-container");
+    var initialize = function() {
+      var currentContent = $(".active-tab > .content");
+      var menuContainer  = $("#menu-container");
+      menuContainer.css("width",  currentContent.width() + "px");
+      menuContainer.css("height", currentContent.height() + "px");
+    }
 
-    menuContainer.css("width",  $(".content", currentTab).width() + "px");
-    menuContainer.css("height", $(".content", currentTab).height() + "px");
+    initialize();
     
   </script>
 </body>
