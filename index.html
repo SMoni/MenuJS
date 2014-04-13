@@ -121,54 +121,39 @@
   <script src="http://libraries.n0b0dy.home/js/bootstrap-3.1.1.min.js"></script>
   <script>
   
-    var slideFrom = function(thisTab, toNextTab) {
+    var slideTo = function(thisTab) {
 
-      if ($.isEmptyObject(toNextTab[0]))
+      if ($.isEmptyObject(thisTab[0]))
         return;
 
-      var direction = (thisTab === toNextTab ? "+" : "-");
-
-      var currentWidth = direction + "=" + thisTab.width();
-      var nextHeight   = $(".content", toNextTab).height() + "px";
-      var nextWidth    = toNextTab.width()                 + "px";
+      var newLeft   = "-" + thisTab.position().left   + "px";
+      var newHeight = $(".content", thisTab).height() + "px";
+      var newWidth  = thisTab.width()                 + "px";
 
       $("#menu-slider").animate({
-        left: currentWidth
+        left: newLeft
       }, 300, function() {
 
       });
 
       $("#menu-container").animate({
-        height: nextHeight,
-        width:  nextWidth
+        height: newHeight,
+        width:  newWidth
       }, 300, function() {
        
       });
       
+      $(".menu-tab").removeClass("active-tab");
+      thisTab.addClass("active-tab");
+      
     };
   
     $( "#left" ).click(function() {
-    
-      var currentTab = $(".active-tab");
-      var toNextTab  = currentTab.next(".menu-tab");
-     
-      slideFrom(currentTab, toNextTab);
-
-      currentTab.removeClass("active-tab");
-      toNextTab.addClass("active-tab");
-      
+      slideTo($(".active-tab").next(".menu-tab"));
     });
     
     $("#right").click(function() {
-
-      var currentTab = $(".active-tab");
-      var toNextTab  = currentTab.prev(".menu-tab");
-
-      slideFrom(toNextTab, toNextTab);
-
-      currentTab.removeClass("active-tab");
-      precedingTab.addClass("active-tab");
-
+      slideTo($(".active-tab").prev(".menu-tab"));
     });
     
     var initialize = function() {
