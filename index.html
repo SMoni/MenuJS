@@ -121,62 +121,53 @@
   <script src="http://libraries.n0b0dy.home/js/bootstrap-3.1.1.min.js"></script>
   <script>
   
-    var slideBy = function(moveTo, nextTop, nextWidth) {
+    var slideFrom = function(thisTab, toNextTab) {
+
+      if ($.isEmptyObject(toNextTab[0]))
+        return;
+
+      var direction = (thisTab === toNextTab ? "+" : "-");
+
+      var currentWidth = direction + "=" + thisTab.width();
+      var nextHeight   = $(".content", toNextTab).height() + "px";
+      var nextWidth    = toNextTab.width()                 + "px";
 
       $("#menu-slider").animate({
-        left: moveTo
+        left: currentWidth
       }, 300, function() {
 
       });
 
       $("#menu-container").animate({
-        height: nextTop   + "px",
-        width:  nextWidth + "px"
+        height: nextHeight,
+        width:  nextWidth
       }, 300, function() {
        
       });
+      
     };
   
     $( "#left" ).click(function() {
     
       var currentTab = $(".active-tab");
-      var nextTab    = currentTab.next(".menu-tab");
+      var toNextTab  = currentTab.next(".menu-tab");
+     
+      slideFrom(currentTab, toNextTab);
 
-      if ($.isEmptyObject(nextTab[0]))
-        return;
-
-      var currentWidth = currentTab.width();
-      var nextTop      = $(".content", nextTab).height();
-      var nextWidth    = nextTab.width();
-      
-      slideBy("-=" + currentWidth, nextTop, nextWidth);
-      
       currentTab.removeClass("active-tab");
+      toNextTab.addClass("active-tab");
       
-      currentTab = nextTab;
-
-      currentTab.addClass("active-tab");
-
     });
     
     $("#right").click(function() {
 
-      var currentTab   = $(".active-tab");
-      var precedingTab = currentTab.prev(".menu-tab");
+      var currentTab = $(".active-tab");
+      var toNextTab  = currentTab.prev(".menu-tab");
 
-      if ($.isEmptyObject(precedingTab[0]))
-        return;
-      
-      var currentTop   = $(".content", precedingTab).height();
-      var currentWidth = precedingTab.width();
-
-      slideBy("+=" + currentWidth, currentTop, currentWidth);
+      slideFrom(toNextTab, toNextTab);
 
       currentTab.removeClass("active-tab");
-
-      currentTab = precedingTab;
-
-      currentTab.addClass("active-tab");
+      precedingTab.addClass("active-tab");
 
     });
     
