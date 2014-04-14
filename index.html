@@ -22,7 +22,6 @@
       
       #menu-container {
         overflow: hidden;
-        border: 1px solid fuchsia; 
       }
       
       #menu-slider {
@@ -140,17 +139,23 @@
       var newHeight = $(".content", thisTab).height() + "px";
       var newWidth  = thisTab.width()                 + "px";
 
-      $("#menu-slider").animate({
-        left: newLeft
-      }, 300, function() {
-
+      $("#menu-slider").animate({ 
+        left: newLeft 
+      }, {
+        duration: 300 
       });
 
       $("#menu-container").animate({
         height: newHeight,
         width:  newWidth
-      }, 300, function() {
-       
+      }, {
+        duration: 300 
+      });
+      
+      $("#divider").animate({ 
+        height: 20
+      }, {
+        duration: 150
       });
       
       $(".menu-tab").removeClass("active-tab");
@@ -165,18 +170,39 @@
     $("#left").click(function() {
       slideTo($(".active-tab").prev(".menu-tab"));
     });
+
+    $("#divider").click(function() {
+    
+      var hideDivider = function() {
+        $("#divider").animate({ 
+          height: 0 
+        }, {
+          duration: 150
+        });
+      };        
+    
+      $("#menu-container").animate({
+        height: 0
+      }, {
+        duration: 300, 
+        complete: function() { hideDivider(); }
+      });
+    });
     
     var initialize = function() {
+    
       var currentContent = $(".active-tab > .content");
       var menuContainer  = $("#menu-container");
+
       menuContainer.css("width",  currentContent.width() + "px");
       menuContainer.css("height", currentContent.height() + "px");
       
       $("li[toggles^='tab-']").each(function() {
-        var tab = $("#" + $(this).attr("toggles"));
+      
+        var thisTab = $("#" + $(this).attr("toggles"));
         
-        $(this).click(function() {
-          slideTo(tab);        
+        $(this).click(function() { 
+          slideTo(thisTab);        
         });
         
       });
