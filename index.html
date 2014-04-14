@@ -10,18 +10,21 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon_8bit.ico">
     <link href="http://libraries.n0b0dy.home/css/bootstrap.min.css" rel="stylesheet">
     <style>
-    
-      p {
-        background: yellow;
+
+      #menu-bar {
+        background-color: orange;        
       }
-      
-      .menu-tab {
-        display: table-cell;
-        background-color:#b0e0e6;
+
+      #menu-strip {
+        margin: 0 auto; 
+        display : table;
+        width: 768px;
       }
-      
+
       #menu-container {
         overflow: hidden;
+        margin-left: auto; 
+        margin-right: auto;
       }
       
       #menu-slider {
@@ -31,21 +34,44 @@
         position: relative;
       }
       
-      #divider {
+      .menu-tab {
+        display: table-cell;
+        background-color:#b0e0e6;
+      }
+      
+      #menu-seperator:before {
+        background: url("images/arrow_top_grey_bold.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        content: "";
+        height: 12px;
+        margin: 4px auto 0;
+        width: 13px;
+      }
+      
+      #menu-seperator {
+        overflow: hidden;      
         position: relative; 
         top: 0px; 
-        background-color: blue; 
-        height: 20px;  
+        height: 20px;
+        background: -moz-linear-gradient(center top , #737B84 0%, #3F4A56 44%, #303C49 45%, #29333E 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+        cursor: pointer;        
       }
      
       ul {
         list-style-type: none;      
       }
  
-      ul.menubar li {
+      ul#menu-strip li {
         width: 100px;
         float: left;
         cursor: pointer;
+      }
+      
+      table {
+        width: 768px;  
+      }
+      
+      td {
+        padding: 0px 10px 4px 10px;
       }
   
     </style>
@@ -57,8 +83,8 @@
 </head>
 <body>
 
-  <div class="container">
-    <ul class="menubar">
+  <div id="menu-bar" class="hidden-xs hidden-sm" style="">
+    <ul id="menu-strip" style="">
       <li id="left">&lt;</li>
       <li toggles="tab-1">Tab 1</li>
       <li toggles="tab-2">Tab 2</li>
@@ -67,31 +93,50 @@
     </ul>
   </div>
   
-  <div id="menu-container" class="" style="margin-left: 40px;">
-    <div id="menu-slider" class="container" style="">
+  <div id="menu-container" class="hidden-xs hidden-sm">
+    <div id="menu-slider" style="">
       <div id="tab-1" class="active-tab menu-tab">
         <div class="content">
-          <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
-          <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+          <p lang="de"><strong>Lorem ipsum dolor sit amet, consectetur adipiscing 
+          fdsff Welt.</strong></p>
+          <table>
+            <tr>
+              <td>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</td>
+              <td>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</td>
+              <td>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</td>
+            </tr>
+          </table>
         </div>          
       </div>
       <div id="tab-2" class="menu-tab">
         <div class="content">
           <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
-          <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+          <table>
+            <tr>
+              <td>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</td>
+              <td>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</td>
+              <td>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</td>
+            </tr>
+          </table>
         </div>
       </div>
       <div id="tab-3" class="menu-tab">
         <div class="content">
           <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
-          <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+          <table>
+            <tr>
+              <td>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</td>
+              <td>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</td>
+              <td>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</td>
+            </tr>
+          </table>
         </div>          
       </div>
     </div>
   </div>
-  <div id="divider" class="container-fluid" style=""></div>
+  <div id="menu-seperator" class="hidden-xs hidden-sm container-fluid"></div>
 
-<!--  
+
   <div class="container">
      <div class="row">
       <div class="news col-md-9 col-sm-12">
@@ -123,12 +168,14 @@
       </div>
     </div>
   </div>
--->
 
   <script src="http://libraries.n0b0dy.home/js/jquery-1.9.1.js"></script>
   <script src="http://libraries.n0b0dy.home/js/jquery-ui-1.10.4.custom.min.js"></script>  
   <script src="http://libraries.n0b0dy.home/js/bootstrap-3.1.1.min.js"></script>
   <script>
+  
+    var slideDuration     = 400;
+    var seperatorDuration = 200;
   
     var slideTo = function(thisTab) {
 
@@ -142,22 +189,22 @@
       $("#menu-slider").animate({ 
         left: newLeft 
       }, {
-        duration: 300 
+        duration: slideDuration
       });
 
       $("#menu-container").animate({
         height: newHeight,
         width:  newWidth
       }, {
-        duration: 300 
+        duration: slideDuration 
       });
       
-      $("#divider").animate({ 
-        height: 20
+      $("#menu-seperator").animate({ 
+        height: "20px"
       }, {
-        duration: 150
+        duration: seperatorDuration
       });
-      
+     
       $(".menu-tab").removeClass("active-tab");
       thisTab.addClass("active-tab");
       
@@ -171,31 +218,49 @@
       slideTo($(".active-tab").prev(".menu-tab"));
     });
 
-    $("#divider").click(function() {
-    
-      var hideDivider = function() {
-        $("#divider").animate({ 
-          height: 0 
+    function hideMenuContainer() {
+
+      var hideMenuSeperator= function() {
+        $("#menu-seperator").animate({ 
+          height: "0px"
         }, {
-          duration: 150
+          duration: seperatorDuration
         });
       };        
     
       $("#menu-container").animate({
-        height: 0
+        height: "0px"
       }, {
-        duration: 300, 
-        complete: function() { hideDivider(); }
+        duration: slideDuration, 
+        complete: function() { hideMenuSeperator(); }
       });
+
+    }
+
+    $("#menu-seperator").click(function() {
+      hideMenuContainer();
     });
     
     var initialize = function() {
+
+      $("#menu-slider").css("width", function() {
+      
+        var newWidth = 0;
+        
+        $(".menu-tab").each(function() {
+          newWidth += $(this).width();
+        });
+      
+        return newWidth + "px";
+      }());
     
       var currentContent = $(".active-tab > .content");
       var menuContainer  = $("#menu-container");
+      var menuSeperator  = $("#menu-seperator");
 
       menuContainer.css("width",  currentContent.width() + "px");
-      menuContainer.css("height", currentContent.height() + "px");
+      menuContainer.css("height", "0px");
+      menuSeperator.css("height", "0px");
       
       $("li[toggles^='tab-']").each(function() {
       
