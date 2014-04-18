@@ -66,9 +66,7 @@ function hideMenu() {
   
 }
 
-$("#menu-seperator").click(function() {
-  hideMenu();
-});
+$("#menu-seperator").click(hideMenu);
 
 function initialize() {
 
@@ -94,14 +92,14 @@ function initialize() {
 
   $("li[toggles^='tab-']").each(function() {
 
-    var toggler = $(this);  
-    var thisTab = $("#" + $(this).attr("toggles"));
+    var thisToggler = $(this);  
+    var thisTab     = $("#" + $(this).attr("toggles"));
 
-    toggler.click(function() {
+    thisToggler.click(function() {
 
       var toggle = function(thisClass) {
         $("li." + thisClass).removeClass(thisClass);
-        toggler.addClass(thisClass);
+        thisToggler.addClass(thisClass);
       };
 
       var shouldMenuBeHidden = function() {
