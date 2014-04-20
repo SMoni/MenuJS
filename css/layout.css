@@ -87,16 +87,15 @@ ul {
 }
 
 ul#menu-strip li {
-  background: url("../images/arrow_down_grey.png") no-repeat scroll 135px 8px rgba(0, 0, 0, 0);
+  background: url("../images/arrow_down_grey.png") no-repeat scroll 131px 8px rgba(0, 0, 0, 0);
   border-right: 1px solid #FFFFFF;
   cursor: pointer;
   float: left;
   padding: 0 10px;
-  width: 150px;
 }
 
 ul#menu-strip li.flyout-open {
-  background: url("../images/arrow_up_grey.png") no-repeat scroll 135px 8px rgba(0, 0, 0, 0);
+  background: url("../images/arrow_up_grey.png") no-repeat scroll 131px 8px rgba(0, 0, 0, 0);
 }      
 
 ul#menu-strip li:first-child {
@@ -106,7 +105,6 @@ ul#menu-strip li:first-child {
 ul#menu-strip li.active {
   font-weight: bold;
 }
-
 
 .affix-menu {
   top: 0px;

@@ -90,11 +90,17 @@ function initialize() {
   menuSeperator.css("height", "0px");
   menuPlaceholder.css("height", $("#menu-bar").height() + "px");
 
-  $("li[toggles^='tab-']").each(function() {
+  var togglers = $("li[toggles^='tab-']");
+
+  var togglerWidth = $("#menu-strip").width() / togglers.length;
+  
+  togglers.each(function() {
 
     var thisToggler = $(this);  
     var thisTab     = $("#" + $(this).attr("toggles"));
 
+    thisToggler.css("width", togglerWidth + "px");
+    
     thisToggler.click(function() {
 
       var toggle = function(thisClass) {
