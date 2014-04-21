@@ -41,33 +41,6 @@ function slideTo(thisTab) {
   
 };
 
-function hideMenu() {
-
-  $("li.flyout-open").removeClass("flyout-open");
-  $("li.active").removeClass("active");
-
-  $("#menu-container").animate({
-    height: "0px"
-  }, {
-    duration: slideDuration
-  });
-  
-  $("#menu-seperator").animate({ 
-    height: "0px"
-  }, {
-    duration: slideDuration
-  });
-  
-  $("#placeholder").animate({
-    height: $("#menu-bar").height() + "px"
-  }, {
-    duration: slideDuration
-  });
-  
-}
-
-$("#menu-seperator").click(hideMenu);
-
 function initialize() {
 
   $("#menu-slider").css("width", function() {
@@ -93,19 +66,56 @@ function initialize() {
   var togglers = $("li[toggles^='tab-']");
 
   var togglerWidth = $("#menu-strip").width() / togglers.length;
+  var arrowWidth   = togglerWidth - 15;
   
+  var arrowNormal = "url('images/arrow_down_grey.png') no-repeat scroll " + arrowWidth + "px 8px rgba(0, 0, 0, 0)";
+  var arrowFlyout = "url('images/arrow_up_grey.png') no-repeat scroll "   + arrowWidth + "px 8px rgba(0, 0, 0, 0)";
+
+  togglers.css("width", togglerWidth + "px");
+  togglers.css("background", arrowNormal);
+
+  var hideMenu = function() {
+  
+    togglers.css("background", arrowNormal);
+    togglers.removeClass("active");
+  
+    $("#menu-container").animate({
+      height: "0px"
+    }, {
+      duration: slideDuration
+    });
+    
+    $("#menu-seperator").animate({ 
+      height: "0px"
+    }, {
+      duration: slideDuration
+    });
+    
+    $("#placeholder").animate({
+      height: $("#menu-bar").height() + "px"
+    }, {
+      duration: slideDuration
+    });
+    
+  }
+
   togglers.each(function() {
 
     var thisToggler = $(this);  
     var thisTab     = $("#" + $(this).attr("toggles"));
-
-    thisToggler.css("width", togglerWidth + "px");
-    
+      
     thisToggler.click(function() {
 
-      var toggle = function(thisClass) {
-        $("li." + thisClass).removeClass(thisClass);
-        thisToggler.addClass(thisClass);
+      var toggle = function() {
+      
+        var currentActive = $("li.active");
+      
+        currentActive.css("background", arrowNormal);
+        thisToggler.css("background", arrowFlyout);
+      
+        currentActive.removeClass("active");
+        thisToggler.addClass("active");
+        
       };
 
       var shouldMenuBeHidden = function() {
@@ -120,14 +130,15 @@ function initialize() {
       
       };
 
-      toggle("active");
-      toggle("flyout-open");
+      toggle();
 
       if (shouldMenuBeHidden())
         hideMenu();
       else
         slideTo(thisTab);        
     });
+    
+    $("#menu-seperator").click(hideMenu);
     
   });
   
