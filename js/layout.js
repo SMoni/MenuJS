@@ -99,6 +99,8 @@ function initialize() {
     
   }
 
+  $("#menu-seperator").click(hideMenu);
+
   togglers.each(function() {
 
     var thisToggler = $(this);  
@@ -137,9 +139,7 @@ function initialize() {
       else
         slideTo(thisTab);        
     });
-    
-    $("#menu-seperator").click(hideMenu);
-    
+
   });
   
 }
